@@ -6,12 +6,12 @@
 | ---------       | ------ | ----------- |
 | email           | string | null: false |
 | password        | string | null: false |
-| nickname        | string   | null: false |
-| first_name      | string   | null: false |
-| last_name       | string   | null: false |
-| last_name_kana  | string   | null: false |
-| first_name_kana | string   | null: false |
-| birthday        | date     | null: false |
+| nickname        | string | null: false |
+| first_name      | string | null: false |
+| last_name       | string | null: false |
+| last_name_kana  | string | null: false |
+| first_name_kana | string | null: false |
+| birthday        | date   | null: false |
 
 
 ### Association
@@ -23,17 +23,17 @@
 
 ## items テーブル
 
-| Column         | Type      | Options       |
-| ---------      | --------  | -----------   |
-| name           | string    | null: false   |
-| content        |  text     | null: false   |
-| category_id    |  integer  | active_hash   |
-| condition_id   |  integer  | active_hash   |
-| shipping_fee_id|  integer  | active_hash   |
-| shipping_place_id |  integer  | active_hash   |
-| shipping_date_id  |  integer  | active_hash   |
-| price          | integer   | null: false   |
-| user           | references| foreign_key: true, null: false|
+| Column            | Type      | Options       |
+| ---------         | --------  | -----------   |
+| name              | string    | null: false   |
+| content           |  text     | null: false   |
+| category_id       |  integer  | null: false   |
+| condition_id      |  integer  | null: false   |
+| shipping_fee_id   |  integer  | null: false   |
+| shipping_place_id |  integer  | null: false   |
+| shipping_date_id  |  integer  | null: false   |
+| price             | integer   | null: false   |
+| user              | references| foreign_key: true, null: false|
 
 ### Association
 
@@ -47,8 +47,8 @@
 | Column     | Type      | Options           |
 | ---------  | --------  | --------------    |
 | text       | text      | null: false       |
-| user       | references | foreign_key: true, null: false |
-| item       | references | foreign_key: true, null: false |
+| user       | references| foreign_key: true, null: false |
+| item       | references| foreign_key: true, null: false |
 
 ### Association
 
@@ -58,8 +58,8 @@
 
 ## purchase テーブル
 
-| Column     | Type      | Options           |
-| ---------  | --------  | --------------    |
+| Column     | Type       | Options           |
+| ---------  | --------   | --------------    |
 | user       | references | foreign_key: true, null: false |
 | item       | references | foreign_key: true, null: false |
 
