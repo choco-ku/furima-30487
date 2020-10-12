@@ -47,8 +47,8 @@
 | Column     | Type      | Options           |
 | ---------  | --------  | --------------    |
 | text       | text      | null: false       |
-| user       | references | foreign_key: true |
-| item       | references | foreign_key: true |
+| user       | references | foreign_key: true, null: false |
+| item       | references | foreign_key: true, null: false |
 
 ### Association
 
@@ -60,8 +60,8 @@
 
 | Column     | Type      | Options           |
 | ---------  | --------  | --------------    |
-| user       | references | foreign_key: true |
-| item       | references | foreign_key: true |
+| user       | references | foreign_key: true, null: false |
+| item       | references | foreign_key: true, null: false |
 
 
 ### Association
@@ -76,12 +76,12 @@
 | Column         | Type      | Options       |
 | ---------      | --------  | -----------   |
 | post_code      |  string   | null: false   |
-| prefecture_id  |  integer  | active_hash   |
+| prefecture_id  |  integer  | null: false   |
 | city           |  string   | null: false   |
 | house_num      |  string   | null: false   |
 | building       |  string   |               |
 | telephone      | string    | null: false   |
-| purchase       | references| foreign_key: true |
+| purchase       | references| foreign_key: true, null: false |
 
 ### Association
 
