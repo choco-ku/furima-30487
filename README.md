@@ -11,31 +11,29 @@
 | last_name       | string   | null: false |
 | last_name_kana  | string   | null: false |
 | first_name_kana | string   | null: false |
-| birth_year      | string   | null: false |
-| birth-month     | string   | null: false |
-| birth-date      | string   | null: false |
+| birthday        | string   | null: false |
+
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_one :purchase
+- has_many :purchase
 
 
 ## items テーブル
 
 | Column         | Type      | Options       |
 | ---------      | --------  | -----------   |
-| image          |           | ActiveStorage |
 | name           | string    | null: false   |
 | content        |  text     | null: false   |
-| category       |  integer  | active_hash   |
-| condition      |  integer  | active_hash   |
-| shipping_fee   |  integer  | active_hash   |
-| shipping_place |  integer  | active_hash   |
-| shipping_date  |  integer  | active_hash   |
+| category_id    |  integer  | active_hash   |
+| condition_id   |  integer  | active_hash   |
+| shipping_fee_id|  integer  | active_hash   |
+| shipping_place_id |  integer  | active_hash   |
+| shipping_date_id  |  integer  | active_hash   |
 | price          | integer   | null: false   |
-| user           | reference | foreign_key: true|
+| user           | references| foreign_key: true, null: false|
 
 ### Association
 
@@ -49,8 +47,8 @@
 | Column     | Type      | Options           |
 | ---------  | --------  | --------------    |
 | text       | text      | null: false       |
-| user       | reference | foreign_key: true |
-| item       | reference | foreign_key: true |
+| user       | references | foreign_key: true |
+| item       | references | foreign_key: true |
 
 ### Association
 
@@ -62,13 +60,13 @@
 
 | Column     | Type      | Options           |
 | ---------  | --------  | --------------    |
-| user       | reference | foreign_key: true |
-| item       | reference | foreign_key: true |
+| user       | references | foreign_key: true |
+| item       | references | foreign_key: true |
 
 
 ### Association
 
-- has-one :address
+- has_one :address
 - belongs_to  :user
 - belongs_to  :item
 
@@ -78,11 +76,12 @@
 | Column         | Type      | Options       |
 | ---------      | --------  | -----------   |
 | post_code      |  string   | null: false   |
-| prefecture     |  intege   | null: false   |
+| prefecture     |  integer  | null: false   |
 | city           |  string   | null: false   |
 | house_num      |  string   | null: false   |
-| building       |  string   | active_hash   |
+| building       |  string   |               |
 | telephone      | string    | null: false   |
+| purchase       | references| foreign_key: true |
 
 ### Association
 
