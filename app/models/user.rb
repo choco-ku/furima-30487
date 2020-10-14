@@ -11,8 +11,8 @@ class User < ApplicationRecord
           validates_format_of :last_name, with: NAME_REGEX, message: "is invalid. Input full-width characters."
 
           NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/
-          validates_format_of :first_name_kana, with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width characters."
-          validates_format_of :last_name_kana, with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width characters."
+          validates_format_of :first_name_kana, with: NAME_KANA_REGEX, message: "is invalid. Input full-width characters."
+          validates_format_of :last_name_kana, with: NAME_KANA_REGEX, message: "is invalid. Input full-width characters."
 
           validates :birthday
 
