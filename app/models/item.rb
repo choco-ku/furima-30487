@@ -20,10 +20,12 @@ class Item < ApplicationRecord
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 999999999, message: 'is invalid.' }
   end
 
-  validates :category_id, numericality: { other_than: 1 } 
-  validates :condition_id, numericality: { other_than: 1 }
-  validates :shipping_fee_id, numericality: { other_than: 1 }
-  validates :shipping_place_id, numericality: { other_than: 1 }
-  validates :shipping_date_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 }  do 
+  validates :category_id
+  validates :condition_id
+  validates :shipping_fee_id
+  validates :shipping_place_id
+  validates :shipping_date_id
+  end
 
 end
