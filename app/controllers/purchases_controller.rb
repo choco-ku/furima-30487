@@ -1,19 +1,14 @@
 class PurchasesController < ApplicationController
   
   before_action :authenticate_user!
-  before_action :set_purchase, except: [:new]
-  before_action :move_to_root_path
+  before_action :set_purchase
 
 
   def index
     @order_form = OrderForm.new
-    if @order_form.save
+    if current_user.id == @item.user_id || @item.purchase != nil
        redirect_to root_path
     end
-  end
-
-  def new
-    @order_form = OrderForm.new
   end
 
   def create 
@@ -26,6 +21,7 @@ class PurchasesController < ApplicationController
       render :index
     end
   end
+
 
  private
   def purchase_params
@@ -43,12 +39,6 @@ class PurchasesController < ApplicationController
       card: purchase_params[:token],    
       currency: 'jpy'
     )
-  end
-
-  def move_to_root_path
-    unless user_signed_in? 
-      redirect_to root_path
-    end
   end
 
 end
