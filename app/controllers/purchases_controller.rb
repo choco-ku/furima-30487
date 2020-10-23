@@ -1,12 +1,15 @@
 class PurchasesController < ApplicationController
   
-  before_action :authenticate_user!, except: [:index]
-  before_action :set_purchase, expect: [:new]
-  before_action :move_to_root_path, except: [:index]
+  before_action :authenticate_user!
+  before_action :set_purchase, except: [:new]
+  before_action :move_to_root_path
 
 
   def index
-    @purchase = Purchase.new
+    @order_form = OrderForm.new
+    if @order_form.save
+       redirect_to root_path
+    end
   end
 
   def new
@@ -24,7 +27,7 @@ class PurchasesController < ApplicationController
     end
   end
 
-  private
+ private
   def purchase_params
     params.permit(:post_code, :shipping_place_id, :city, :house_num, :building, :telephone, :uer_id, :item_id).merge(user_id: current_user.id, token: params[:token])
   end
@@ -43,7 +46,7 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_root_path
-    unless user_signed_in?
+    unless user_signed_in? 
       redirect_to root_path
     end
   end
